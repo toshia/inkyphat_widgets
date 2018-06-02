@@ -1,0 +1,10 @@
+[Unit]
+Description = inkypHat modifier
+
+[Service]
+ExecStart = /usr/bin/python3 /home/pi/work/main.py
+Restart = always
+Type = simple
+
+[Install]
+WantedBy = multi-user.target

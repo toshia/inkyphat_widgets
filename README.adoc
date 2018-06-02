@@ -1,0 +1,55 @@
+= Inky pHATにいろいろ表示するためのやつ
+
+link:https://shop.pimoroni.com/products/inky-phat[Inky pHAT] に色々表示して遊んでいたのですが、いろんなものを同時に表示できたほうが便利だなあと思ったんです。
+
+== これは何
+
+Inky pHATにいろいろ表示するスクリプト群を、再利用しやすくまとめたものです。それぞれのコードは同時に利用でき、画面の任意の領域にいくつでも表示することができます。
+
+同時に利用できる:: 左半分にはRedmine、右にはあひる焼きといった具合に、1つのInky pHATに複数の情報を気軽に組み合わせて表示することができます。
+サイズが指定できる:: ahiruyakiなどの一部のウィジェットを除いて、表示域を指定できます。一つのウィジェットを画面全体に割り当てることもできるし、小さくしていろんなウィジェットを同時に配置できます。
+同じウィジェットをいくつも配置できる:: Redmineウィジェットを、クエリやホストを変えていくつも設置することができます。他のウィジェットについても、いくつでも配置することができます。
+画面の書き換え回数の節約:: 画面のリフレッシュが最低限の回数になるように配慮しています。
+カスタムウィジェットを作りやすい:: それぞれのウィジェットはコルーチンを利用して書かれているため、複数のウィジェットを画面上に配置できるにも関わらず、無限ループなどを使って同期的なコードを書けます。
+
+== 使用方法
+
+1. link:https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-inky-phat[Getting Started with Inky pHAT - Pimoroni Yarr-niversity]に従ってセットアップします。
+1. このリポジトリをチェックアウトします。
+1. `main.tempmate.py`をコピーし、`main.py`を作ります。
+1. `main.py`を開いて、コメントに従って書き換えましょう。
+1. `main.py`を、次のようなコマンドで起動します。
+[source,sh]
+----
+python3 main.py
+----
+
+起動中は定期的にポーリングしたりして、随時画面を更新していきます。
+
+Ctrl+c で終了します。
+
+== 収録しているウィジェット
+
+=== Redmine
+
+Redmine APIに毎分アクセスして、チケット一覧を表示します。Redmineのカスタムクエリ機能で予めクエリを作っておき、クエリの条件を変えたら並びも変わるということにしておくとカスタマイズが楽です。
+
+=== MPC
+
+mpd (Music Player Daemon) で現在再生されている楽曲の名前を表示します。また、再生状況（再生中、一時停止、停止）を表示します。
+
+=== ahiruyaki
+
+みんなのアイドルahiruyakiを表示します。
+単純にPNG画像を表示する時のサンプルです。
+
+== License
+Copyright (C) 2018 Toshiaki Asai
+
+This software is released under the MIT License, see LICENSE
+
+このソフトウェアは MIT ライセンスの下で公開されています。 LICENSE を参照してください。
+
+あひる焼きの画像は、link:https://yakuna.ahiru3.net/[配布元]より、link:https://creativecommons.org/licenses/by-nc/4.0/[クリエイティブ・コモンズ 表示 – 非営利 4.0 国際 ライセンス]で配布されているものを加工しています。
+
+その他の画像は、link:http://creativecommons.org/licenses/by-sa/3.0/deed.ja[クリエイティブ・コモンズ 表示 - 継承 3.0 非移植 ライセンス]の下に提供されています。
